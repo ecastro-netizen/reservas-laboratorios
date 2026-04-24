@@ -1,127 +1,91 @@
 <!DOCTYPE html>
-
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Reservas de Laboratorios</title>
+<title>Reserva de Laboratorios</title>
 
 <style>
-* {
-    box-sizing: border-box;
-}
-
 body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
-    font-family: 'Segoe UI', Roboto, Arial, sans-serif;
-    background: linear-gradient(135deg, #eef2f7, #dbe5ff);
+    background: linear-gradient(135deg, #eef2f7, #d9e2ec);
 }
 
 /* HEADER */
 header {
     background: linear-gradient(90deg, #1e3a5f, #2b7cff);
     color: white;
-    padding: 30px 20px;
+    padding: 25px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-}
-
-header h1 {
-    margin: 0;
-    font-size: 30px;
-}
-
-header p {
-    margin-top: 8px;
-    opacity: 0.9;
-}
-
-/* CONTENEDOR PRINCIPAL */
-.wrapper {
-    width: 95%;
-    max-width: 1200px;
-    margin: 30px auto;
+    font-size: 24px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 /* BOTONES */
 .botones {
-    display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
-    flex-wrap: wrap;
+    text-align: center;
+    margin: 30px 0;
 }
 
 .botones button {
-    padding: 12px 25px;
+    padding: 14px 28px;
+    margin: 10px;
     border: none;
-    border-radius: 25px;
-    background: white;
-    color: #2b7cff;
-    font-weight: 600;
+    border-radius: 30px;
+    background: linear-gradient(135deg, #2b7cff, #174ecf);
+    color: white;
+    font-size: 15px;
+    font-weight: bold;
     cursor: pointer;
     transition: all 0.3s ease;
-    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .botones button:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #174ecf, #0d3a9e);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-.botones button.activo {
-    background: #2b7cff;
-    color: white;
-}
-
-/* TARJETA */
-.card {
+/* CONTENEDOR PRINCIPAL */
+.contenedor {
+    width: 95%;
+    max-width: 1200px;
+    margin: auto;
     background: white;
+    padding: 20px;
     border-radius: 15px;
-    padding: 15px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    border: 1px solid #ddd;
+}
+
+/* TITULO LAB */
+.titulo-lab {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #1e3a5f;
+    font-weight: bold;
 }
 
 /* IFRAME */
 iframe {
     width: 100%;
-    height: 720px;
+    height: 650px;
     border: none;
     border-radius: 10px;
-}
-
-/* TRANSICIÓN */
-.lab {
-    display: none;
-    animation: fade 0.3s ease;
-}
-
-@keyframes fade {
-    from {opacity: 0;}
-    to {opacity: 1;}
-}
-
-/* FOOTER */
-footer {
-    text-align: center;
-    padding: 15px;
-    font-size: 13px;
-    color: #555;
 }
 </style>
 
 <script>
-function mostrarLab(lab, boton) {
-
+function mostrarLab(lab) {
     document.getElementById("lab101").style.display = "none";
     document.getElementById("lab102").style.display = "none";
     document.getElementById("lab103").style.display = "none";
 
-    document.querySelectorAll(".botones button").forEach(btn => {
-        btn.classList.remove("activo");
-    });
-
     document.getElementById(lab).style.display = "block";
-    boton.classList.add("activo");
 }
 </script>
 
@@ -130,44 +94,36 @@ function mostrarLab(lab, boton) {
 <body>
 
 <header>
-    <h1>Reservas de Laboratorios</h1>
-    <p>Colegio Concepción Los Acacios · Plataforma de reservas</p>
+    Sistema de Reserva de Laboratorios
 </header>
 
-<div class="wrapper">
-
-```
 <div class="botones">
-    <button class="activo" onclick="mostrarLab('lab101', this)">Laboratorio 101</button>
-    <button onclick="mostrarLab('lab102', this)">Laboratorio 102</button>
-    <button onclick="mostrarLab('lab103', this)">Laboratorio 103</button>
+    <button onclick="mostrarLab('lab101')">Laboratorio 101</button>
+    <button onclick="mostrarLab('lab102')">Laboratorio 102</button>
+    <button onclick="mostrarLab('lab103')">Laboratorio 103</button>
 </div>
 
-<div class="card">
+<div class="contenedor">
 
     <!-- LAB 101 -->
-    <div id="lab101" class="lab" style="display:block;">
+    <div id="lab101">
+        <div class="titulo-lab">Laboratorio 101</div>
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cbI0xfoGSxQocq_wpL__KLpnNvt9-xJwe4tusOPyl6ocssmiuQ0dyRABNyy9Fug7UovfwjtAT?gv=true"></iframe>
     </div>
 
     <!-- LAB 102 -->
-    <div id="lab102" class="lab">
+    <div id="lab102" style="display:none;">
+        <div class="titulo-lab">Laboratorio 102</div>
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NpC_fxMrUCFNd5Rq0pEFRk65xbhl6hSMPSxSO426cNTVU3BlxMiLqU1UhzfVv9WwoWDeHuV8L?gv=true"></iframe>
     </div>
 
     <!-- LAB 103 -->
-    <div id="lab103" class="lab">
-        <iframe src="AQUI_VA_TU_LINK_DEL_103"></iframe>
+    <div id="lab103" style="display:none;">
+        <div class="titulo-lab">Laboratorio 103</div>
+        <iframe src="https://calendar.google.com/calendar/appointments/AcZssZ2aBxq1d8IHYZFs0d1sNss7uo9Kxksy7nGbjMA=?gv=true"></iframe>
     </div>
 
 </div>
-```
-
-</div>
-
-<footer>
-    Sistema de reservas · Área de Informática
-</footer>
 
 </body>
 </html>
