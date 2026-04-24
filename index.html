@@ -6,7 +6,7 @@
 
 <style>
 body {
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin: 0;
     background: linear-gradient(135deg, #eef2f7, #d9e2ec);
 }
@@ -15,50 +15,51 @@ body {
 header {
     background: linear-gradient(90deg, #1e3a5f, #2b7cff);
     color: white;
-    padding: 30px 20px;
+    padding: 25px;
     text-align: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .logo {
-    width: 130px;
+    width: 120px;
     margin-bottom: 10px;
 }
 
-.titulo {
-    font-size: 28px;
+.titulo-principal {
+    font-size: 24px;
     font-weight: bold;
 }
 
 /* BOTONES */
 .botones {
     text-align: center;
-    margin: 30px 0;
+    margin: 25px 0 10px;
 }
 
 .botones button {
-    padding: 14px 30px;
+    padding: 14px 28px;
     margin: 10px;
     border: none;
     border-radius: 30px;
-    background: white;
-    color: #1e3a5f;
+    background: linear-gradient(135deg, #2b7cff, #174ecf);
+    color: white;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
 }
 
 .botones button:hover {
-    transform: scale(1.05);
-    background: #2b7cff;
-    color: white;
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #174ecf, #0d3a9e);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
 /* DESCRIPCIÓN */
 .descripcion {
     text-align: center;
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 20px;
     color: #333;
 }
@@ -69,20 +70,18 @@ header {
     max-width: 1200px;
     margin: auto;
     background: white;
-    padding: 25px;
+    padding: 20px;
     border-radius: 15px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
 }
 
-/* TRANSICIÓN */
-.lab {
-    display: none;
-    animation: fadeIn 0.5s ease;
-}
-
-@keyframes fadeIn {
-    from {opacity: 0;}
-    to {opacity: 1;}
+/* TITULO LAB */
+.titulo-lab {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #1e3a5f;
+    font-weight: bold;
 }
 
 iframe {
@@ -91,54 +90,20 @@ iframe {
     border: none;
     border-radius: 10px;
 }
-
-/* MODAL */
-.modal {
-    display: none;
-    position: fixed;
-    z-index: 999;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.5);
-}
-
-.modal-content {
-    background: white;
-    padding: 25px;
-    border-radius: 10px;
-    width: 300px;
-    margin: 15% auto;
-    text-align: center;
-    animation: fadeIn 0.4s;
-}
-
-.modal button {
-    margin-top: 15px;
-    padding: 10px 20px;
-    border: none;
-    background: #2b7cff;
-    color: white;
-    border-radius: 20px;
-    cursor: pointer;
-}
 </style>
 
 <script>
 function mostrarLab(lab) {
+
+    if (lab === "lab201") {
+        alert("Este laboratorio es de uso exclusivo para estudiantes de 1° a 4° básico.");
+    }
 
     document.getElementById("lab101").style.display = "none";
     document.getElementById("lab102").style.display = "none";
     document.getElementById("lab201").style.display = "none";
 
     document.getElementById(lab).style.display = "block";
-
-    if (lab === "lab201") {
-        document.getElementById("modal").style.display = "block";
-    }
-}
-
-function cerrarModal() {
-    document.getElementById("modal").style.display = "none";
 }
 </script>
 
@@ -147,8 +112,9 @@ function cerrarModal() {
 <body>
 
 <header>
+    <!-- IMPORTANTE: asegúrate que el nombre del archivo coincida -->
     <img src="03 Logo acacios COEMCO CMYK (9).png" class="logo">
-    <div class="titulo">Sistema de Reserva de Laboratorios de Computación</div>
+    <div class="titulo-principal">Sistema de Reserva de Laboratorios</div>
 </header>
 
 <div class="botones">
@@ -158,37 +124,31 @@ function cerrarModal() {
 </div>
 
 <div class="descripcion">
-    <strong>Laboratorio -101:</strong> Ubicado donde está la oficina de informática.<br>
-    <strong>Laboratorio -102:</strong> Ubicado al frente de informática.<br>
-    <strong>Laboratorio 201:</strong> Uso exclusivo para estudiantes de 1° a 4° básico.
+    <p><b>Laboratorio -101:</b> Ubicado donde está la oficina de informática.</p>
+    <p><b>Laboratorio -102:</b> Ubicado al frente de informática.</p>
+    <p><b>Laboratorio 201:</b> Laboratorio de prebásica (solo estudiantes de 1° a 4° básico).</p>
 </div>
 
 <div class="contenedor">
 
-    <!-- LAB 101 -->
-    <div id="lab101" class="lab" style="display:block;">
-        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cbI0xfoGSxQocq_wpL__KLpnNvt9-xJwe4tusOPyl6ocssmiuQ0dyRABNyy9Fug7UovfwjtAT?gv=true"></iframe>
+    <!-- LAB -101 (ACTUALIZADO) -->
+    <div id="lab101">
+        <div class="titulo-lab">Laboratorio -101</div>
+        <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ1yijX3eqzE4lBD7uVmn_9uvflj-KlsZuXv8FAbq40IMhItIckp2FtP8kNHfnImLWlcLBQbE4GV?gv=true"></iframe>
     </div>
 
-    <!-- LAB 102 -->
-    <div id="lab102" class="lab">
+    <!-- LAB -102 -->
+    <div id="lab102" style="display:none;">
+        <div class="titulo-lab">Laboratorio -102</div>
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NpC_fxMrUCFNd5Rq0pEFRk65xbhl6hSMPSxSO426cNTVU3BlxMiLqU1UhzfVv9WwoWDeHuV8L?gv=true"></iframe>
     </div>
 
     <!-- LAB 201 -->
-    <div id="lab201" class="lab">
+    <div id="lab201" style="display:none;">
+        <div class="titulo-lab">Laboratorio 201 Prebásica</div>
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2uLcmeOQiJhIRaRnHMfGFU28OzTAw-1pvJetPbjdADUeT5oLrZdK1wZuN-AcF0RoR0A_iFTFul?gv=true"></iframe>
     </div>
 
-</div>
-
-<!-- MODAL -->
-<div id="modal" class="modal">
-    <div class="modal-content">
-        <h3>Información</h3>
-        <p>Este laboratorio es exclusivo para estudiantes de 1° a 4° básico.</p>
-        <button onclick="cerrarModal()">Entendido</button>
-    </div>
 </div>
 
 </body>
