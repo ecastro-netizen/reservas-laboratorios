@@ -49,7 +49,7 @@ header {
     box-shadow: 0 6px 15px rgba(0,0,0,0.3);
 }
 
-/* CONTENEDOR PRINCIPAL */
+/* CONTENEDOR */
 .contenedor {
     width: 95%;
     max-width: 1200px;
@@ -61,7 +61,7 @@ header {
     border: 1px solid #ddd;
 }
 
-/* TITULO LAB */
+/* TITULO */
 .titulo-lab {
     text-align: center;
     font-size: 20px;
@@ -70,7 +70,6 @@ header {
     font-weight: bold;
 }
 
-/* IFRAME */
 iframe {
     width: 100%;
     height: 650px;
@@ -83,7 +82,7 @@ iframe {
 function mostrarLab(lab) {
     document.getElementById("lab101").style.display = "none";
     document.getElementById("lab102").style.display = "none";
-    document.getElementById("lab103").style.display = "none";
+    document.getElementById("lab201").style.display = "none";
 
     document.getElementById(lab).style.display = "block";
 }
@@ -98,28 +97,28 @@ function mostrarLab(lab) {
 </header>
 
 <div class="botones">
-    <button onclick="mostrarLab('lab101')">Laboratorio 101</button>
-    <button onclick="mostrarLab('lab102')">Laboratorio 102</button>
-    <button onclick="mostrarLab('lab103')">Laboratorio 103</button>
+    <button onclick="mostrarLab('lab101')">Laboratorio -101</button>
+    <button onclick="mostrarLab('lab102')">Laboratorio -102</button>
+    <button onclick="mostrarLab('lab201')">Laboratorio 201 Prebásica</button>
 </div>
 
 <div class="contenedor">
 
-    <!-- LAB 101 -->
+    <!-- LAB -101 -->
     <div id="lab101">
-        <div class="titulo-lab">Laboratorio 101</div>
+        <div class="titulo-lab">Laboratorio -101</div>
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cbI0xfoGSxQocq_wpL__KLpnNvt9-xJwe4tusOPyl6ocssmiuQ0dyRABNyy9Fug7UovfwjtAT?gv=true"></iframe>
     </div>
 
-    <!-- LAB 102 -->
+    <!-- LAB -102 -->
     <div id="lab102" style="display:none;">
-        <div class="titulo-lab">Laboratorio 102</div>
+        <div class="titulo-lab">Laboratorio -102</div>
         <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NpC_fxMrUCFNd5Rq0pEFRk65xbhl6hSMPSxSO426cNTVU3BlxMiLqU1UhzfVv9WwoWDeHuV8L?gv=true"></iframe>
     </div>
 
-    <!-- LAB 103 -->
-    <div id="lab103" style="display:none;">
-        <div class="titulo-lab">Laboratorio 103</div>
+    <!-- LAB 201 -->
+    <div id="lab201" style="display:none;">
+        <div class="titulo-lab">Laboratorio 201 Prebásica</div>
         <iframe src="https://calendar.google.com/calendar/appointments/AcZssZ2aBxq1d8IHYZFs0d1sNss7uo9Kxksy7nGbjMA=?gv=true"></iframe>
     </div>
 
