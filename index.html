@@ -67,7 +67,7 @@ header p {
     color: white;
 }
 
-/* DESCRIPCIÓN GRANDE */
+/* DESCRIPCIÓN */
 .descripcion-principal {
     text-align: center;
     font-size: 18px;
@@ -120,21 +120,17 @@ iframe {
 <script>
 function mostrarLab(labId, boton, descripcion) {
 
-    // Ocultar labs
     document.querySelectorAll(".lab").forEach(lab => {
         lab.style.display = "none";
     });
 
-    // Botón activo
     document.querySelectorAll(".botones button").forEach(btn => {
         btn.classList.remove("activo");
     });
 
-    // Mostrar lab
     document.getElementById(labId).style.display = "block";
     boton.classList.add("activo");
 
-    // Cambiar descripción
     document.getElementById("descripcion").innerText = descripcion;
 }
 </script>
@@ -149,15 +145,28 @@ function mostrarLab(labId, boton, descripcion) {
 </header>
 
 <div class="botones">
-    <button class="activo" onclick="mostrarLab('lab101', this, 'Ubicado donde está la oficina de informática.')">Laboratorio -101</button>
-    <button onclick="mostrarLab('lab102', this, 'Ubicado al frente de la oficina de informática.')">Laboratorio -102</button>
-    <button onclick="mostrarLab('lab201', this, 'Laboratorio de prebásica, exclusivo para cursos de 1° a 4° básico.')">Laboratorio 201 Prebásica</button>
+    <button class="activo" onclick="mostrarLab('lab101', this, 'Laboratorio -101: Ubicado donde está la oficina de informática.')">
+        Laboratorio -101
+    </button>
+
+```
+<button onclick="mostrarLab('lab102', this, 'Laboratorio -102: Ubicado al frente de la oficina de informática.')">
+    Laboratorio -102
+</button>
+
+<button onclick="
+    if(confirm('Este laboratorio es de uso exclusivo para estudiantes de 1° a 4° básico. ¿Desea continuar?')){
+        mostrarLab('lab201', this, 'Laboratorio 201 Prebásica: Uso exclusivo para cursos de 1° a 4° básico.');
+    }
+">
+    Laboratorio 201 Prebásica
+</button>
+```
+
 </div>
 
-<!-- DESCRIPCIÓN DINÁMICA -->
-
 <div id="descripcion" class="descripcion-principal">
-    Ubicado donde está la oficina de informática.
+    Laboratorio -101: Ubicado donde está la oficina de informática.
 </div>
 
 <div class="contenedor">
