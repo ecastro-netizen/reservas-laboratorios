@@ -42,7 +42,7 @@ header p {
     justify-content: center;
     gap: 12px;
     flex-wrap: wrap;
-    margin: 25px;
+    margin: 25px 10px 10px;
 }
 
 .botones button {
@@ -67,6 +67,16 @@ header p {
     color: white;
 }
 
+/* DESCRIPCIÓN GRANDE */
+.descripcion-principal {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 500;
+    color: #1e3a5f;
+    margin: 10px auto 20px;
+    max-width: 700px;
+}
+
 /* CONTENEDOR */
 .contenedor {
     width: 95%;
@@ -82,17 +92,9 @@ header p {
 .titulo-lab {
     text-align: center;
     font-size: 20px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     color: #1e3a5f;
     font-weight: bold;
-}
-
-/* DESCRIPCIÓN */
-.descripcion-lab {
-    text-align: center;
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 15px;
 }
 
 /* IFRAME */
@@ -116,18 +118,24 @@ iframe {
 </style>
 
 <script>
-function mostrarLab(labId, boton) {
+function mostrarLab(labId, boton, descripcion) {
 
+    // Ocultar labs
     document.querySelectorAll(".lab").forEach(lab => {
         lab.style.display = "none";
     });
 
+    // Botón activo
     document.querySelectorAll(".botones button").forEach(btn => {
         btn.classList.remove("activo");
     });
 
+    // Mostrar lab
     document.getElementById(labId).style.display = "block";
     boton.classList.add("activo");
+
+    // Cambiar descripción
+    document.getElementById("descripcion").innerText = descripcion;
 }
 </script>
 
@@ -141,9 +149,15 @@ function mostrarLab(labId, boton) {
 </header>
 
 <div class="botones">
-    <button class="activo" onclick="mostrarLab('lab101', this)">Laboratorio -101</button>
-    <button onclick="mostrarLab('lab102', this)">Laboratorio -102</button>
-    <button onclick="mostrarLab('lab201', this)">Laboratorio 201 Prebásica</button>
+    <button class="activo" onclick="mostrarLab('lab101', this, 'Ubicado donde está la oficina de informática.')">Laboratorio -101</button>
+    <button onclick="mostrarLab('lab102', this, 'Ubicado al frente de la oficina de informática.')">Laboratorio -102</button>
+    <button onclick="mostrarLab('lab201', this, 'Laboratorio de prebásica, exclusivo para cursos de 1° a 4° básico.')">Laboratorio 201 Prebásica</button>
+</div>
+
+<!-- DESCRIPCIÓN DINÁMICA -->
+
+<div id="descripcion" class="descripcion-principal">
+    Ubicado donde está la oficina de informática.
 </div>
 
 <div class="contenedor">
@@ -152,21 +166,18 @@ function mostrarLab(labId, boton) {
 <!-- LAB 101 -->
 <div id="lab101" class="lab" style="display:block;">
     <div class="titulo-lab">Laboratorio -101</div>
-    <div class="descripcion-lab">Ubicado donde está la oficina de informática.</div>
     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2cbI0xfoGSxQocq_wpL__KLpnNvt9-xJwe4tusOPyl6ocssmiuQ0dyRABNyy9Fug7UovfwjtAT?gv=true"></iframe>
 </div>
 
 <!-- LAB 102 -->
 <div id="lab102" class="lab">
     <div class="titulo-lab">Laboratorio -102</div>
-    <div class="descripcion-lab">Ubicado al frente de la oficina de informática.</div>
     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ3NpC_fxMrUCFNd5Rq0pEFRk65xbhl6hSMPSxSO426cNTVU3BlxMiLqU1UhzfVv9WwoWDeHuV8L?gv=true"></iframe>
 </div>
 
-<!-- LAB 201 PREBÁSICA -->
+<!-- LAB 201 -->
 <div id="lab201" class="lab">
     <div class="titulo-lab">Laboratorio 201 Prebásica</div>
-    <div class="descripcion-lab">Laboratorio de prebásica, exclusivo para cursos de 1° a 4° básico.</div>
     <iframe src="https://calendar.google.com/calendar/appointments/schedules/AcZssZ2uLcmeOQiJhIRaRnHMfGFU28OzTAw-1pvJetPbjdADUeT5oLrZdK1wZuN-AcF0RoR0A_iFTFul?gv=true"></iframe>
 </div>
 ```
